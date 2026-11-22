@@ -44,8 +44,8 @@ public:
     }
 
     // 4. Создание графического примитива (Прямоугольник)
-    void addRectangle(double w, double h) {
-        auto rect = std::make_unique<Rectangle>(w, h);
+        void addRectangle(double w, double h) {
+        auto rect = std::make_unique<MyRect>(w, h); // <--- Поменяли тут
         doc.addShape(std::move(rect));
         view.showMessage("Добавлен прямоугольник размером " + std::to_string(w) + "x" + std::to_string(h));
     }

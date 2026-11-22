@@ -1,5 +1,11 @@
 #include <iostream>
 #include <memory>
+#include <string>
+
+#ifdef _WIN32
+#include <windows.h>
+#endif
+
 #include "Document.h"
 #include "View.h"
 #include "Controller.h"
@@ -40,19 +46,24 @@ void onRenderClicked(Controller& controller) {
 }
 
 int main() {
+    #ifdef _WIN32
+        SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
+    #endif
+
     std::cout << "=== Запуск векторного редактора (MVC) ===" << std::endl;
 
-    // 1. Создаем Модель 
+    // 1. Создаю Модель 
     Document document;
     
-    // 2. Создаем Представление 
+    // 2. Создаю Представление 
     View view;
     
-    // 3. Создаем Контроллер, связывая Модель и Представление
+    // 3. Создаю Контроллер, связывая Модель и Представление
     Controller controller(document, view);
 
-    // Демонстрация работы 
-    
+    //Демонстрация работы 
+
     // Создаю новый документ
     onNewDocumentClicked(controller);
 
